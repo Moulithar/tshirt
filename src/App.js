@@ -6,7 +6,9 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/tshirt");
+        const response = await fetch(
+          "https://tshirt-backend-mouli.onrender.com/tshirt"
+        );
         const data = await response.json();
         setTshirtData(data);
       } catch (error) {
@@ -22,13 +24,16 @@ const App = () => {
 
   const handlePostRequest = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/tshirt/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ logo }),
-      });
+      const response = await fetch(
+        `https://tshirt-backend-mouli.onrender.com/tshirt/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ logo }),
+        }
+      );
 
       const data = await response.json();
       setResponseMessage(data.tshirt);
